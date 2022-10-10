@@ -11,9 +11,18 @@ defmodule Exmeal.Meal do
 
   schema "meals" do
     # TO DO
+    field :calories, :integer
+    field :date, :date
+    field :description, :string
+    field :user_id, :binary_id
+
+    timestamps()
+
   end
 
-  def changeset() do
-    # TO DO
+  def changeset(struct \\ %__MODULE__{}, attrs) do
+    struct
+    |> cast(attrs, @required_params)
+    |> validate_required(@required_params)
   end
 end
